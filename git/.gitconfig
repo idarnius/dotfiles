@@ -8,13 +8,13 @@
   ui = auto
 
 [alias]
-  s   = status --short --branch
+  st   = status --short --branch
   d   = diff
   dc  = diff --cached
   br  = branch
   brd = branch -d
   brD = branch -D
-  c   = commit
+  ci   = commit
   cm  = commit -m
   ca  = commit --amend
   a   = add
@@ -50,3 +50,6 @@
 ; only for git ~> 1.8
 [push]
   default = simple
+[user]
+	name = Ignasi Blanco
+	email = ignasi.blanco@sastre.cat
