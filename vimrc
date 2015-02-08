@@ -4,6 +4,27 @@
 " Basic options
 set nocompatible " be iMproved!
 
+"==============================================================================
+"                                      look & feel
+"==============================================================================
+if $ITERM_COLORS ==? "solarized-light"
+  set background=dark
+  let g:soliarized_termcolors=256
+  colorscheme solarized
+  hi NonText cterm=NONE ctermfg=white ctermbg=white
+elseif $ITERM_COLORS ==? "darkspectrum"
+  colorscheme solarized
+  hi NonText cterm=NONE ctermfg=235 ctermbg=235
+else
+  "highlight Normal guibg=black guifg=white
+  hi LineNr ctermfg=grey
+  "let g:soliarized_termcolors=256
+  let g:molokai_original = 1
+  "let g:soliarized_termtrans=1
+  "colorscheme solarized
+  syntax enable
+endif
+"
 set encoding=utf-8 " default character encoding
 set modeline       " be able to use modelines when a file is loaded
 set notitle        " don't set the terminal title
@@ -26,9 +47,10 @@ inoremap jj <ESC>
 " }}}1
 
 " UI & layout {{{1
+"
+"set relativenumber " it helps you count lines
 set laststatus=2   " always show statusline
 set number         " you need line numbers
-set relativenumber " it helps you count lines
 set ruler          " see where you are
 set wrap           " wrap long lines without changing it
 set linebreak      " wrap the lines by words
@@ -53,10 +75,9 @@ nmap <leader>l :set list!<CR>
 " only show cursorline in the current window and in normal mode.
 augroup cursorline
   autocmd!
-  autocmd WinLeave * set nocursorline
-  autocmd WinEnter * set cursorline
-  autocmd InsertEnter * set nocursorline
-  autocmd InsertLeave * set cursorline
+  autocmd WinLeave * set cursorline cursorcolumn
+  autocmd InsertEnter * set nocursorline nocursorcolumn
+  autocmd InsertLeave * set cursorline cursorcolumn
 augroup END
 
 " make sure vim returns to the same line when you reopen a file.
@@ -171,43 +192,18 @@ set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin(expand('~/.vim/bundle/'))
 
 " let Vundle manage Vundle
-Plugin 'gmarik/Vundle.vim'
-Plugin 'edsono/vim-matchit'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-ragtag'
-Plugin 'tpope/vim-haml'
-Plugin 'tpope/vim-markdown'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'SirVer/ultisnips'
-Plugin 'godlygeek/tabular'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'othree/html5.vim'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'vim-scripts/nginx.vim'
-Plugin 'kana/vim-fakeclip'
-Plugin 'kana/vim-textobj-user'
-Plugin 'nelstrom/vim-textobj-rubyblock'
-Plugin 'rstacruz/sparkup', { 'rtp': 'vim/' }
-Plugin 'groenewege/vim-less'
-Plugin 'kana/vim-smartinput'
-Plugin 'jgdavey/vim-blockle'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'rodjek/vim-puppet'
-Plugin 'pangloss/vim-javascript'
-Plugin 'guns/vim-clojure-static'
-Plugin 'tpope/vim-classpath'
-Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-fugitive'
-Plugin 'bling/vim-airline'
-Plugin 'Blackrush/vim-gocode'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-dispatch'
-Plugin 'AndrewRadev/splitjoin.vim'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-eunuch'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'rodjek/vim-puppet'
+Plugin 'scrooloose/syntastic'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'godlygeek/tabular'
+Plugin 'cschlueter/vim-wombat'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tomasr/molokai'
 
 call vundle#end()
 " }}}2
@@ -295,6 +291,7 @@ set viminfo+=!
 " vim-airline {{{2
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+"let g:molokai_original = 1
 "let g:airline_theme='solarized'
 " }}}2
 
@@ -347,6 +344,7 @@ augroup END
 " Colors {{{1
 set t_Co=256
 set background=dark
+colorscheme molokai
 "colorscheme solarized
 syntax enable
 " }}}1
