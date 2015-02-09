@@ -4,7 +4,7 @@
 ZSH=~/.dotfiles/oh-my-zsh
 ZSH_THEME="robbyrussell"
 
-plugins=(git osx git-extras)
+plugins=(git osx git-extras git-prompt)
 
 source $ZSH/oh-my-zsh.sh
 
