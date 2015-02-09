@@ -19,9 +19,8 @@ else
   "highlight Normal guibg=black guifg=white
   hi LineNr ctermfg=grey
   "let g:soliarized_termcolors=256
-  let g:molokai_original = 1
+  let g:rehash256 = 1
   "let g:soliarized_termtrans=1
-  "colorscheme solarized
   syntax enable
 endif
 "
@@ -208,6 +207,13 @@ Plugin 'tomasr/molokai'
 call vundle#end()
 " }}}2
 
+"Turns syntax highlighting on
+syntax on
+colorscheme molokai
+let g:original=1
+let g:rehash256=1
+set background=dark
+
 " Ragtag {{{2
 let g:ragtag_global_maps = 1
 " }}}2
@@ -304,17 +310,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:UltiSnipsSnippetDirectories=["mysnippets"]
 " }}}2
 
-" Dispatch {{{2
-autocmd FileType ruby let b:dispatch = 'ruby %'
-nmap <leader>d :Dispatch<cr>
-nmap <leader>D :Dispatch!<cr>
-nmap <leader>s :Start<space>
-nmap <leader>S :Start!<space>
-nmap <localleader>d :Dispatch<space>
-nmap <localleader>D :Dispatch!<space>
-" }}}2
-" }}}1
-
 " Filetypes {{{1
 filetype on
 filetype plugin indent on
@@ -341,13 +336,6 @@ augroup END
 " }}}2
 " }}}1
 
-" Colors {{{1
-set t_Co=256
-set background=dark
-colorscheme molokai
-"colorscheme solarized
-syntax enable
-" }}}1
 
 " Functions {{{1
 " Delete EOL whitespace {{{2
